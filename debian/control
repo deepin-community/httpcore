@@ -1,15 +1,52 @@
-Source: template-repository
-Section: unknown
+Source: httpcore
+Section: python
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Sandro Tosi <morph@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               mitmproxy <!nocheck>,
+               pybuild-plugin-pyproject,
+               python3-all,
+               python3-anyio <!nocheck>,
+               python3-hatch-fancy-pypi-readme,
+               python3-hatchling,
+               python3-pytest <!nocheck>,
+               python3-pytest-asyncio <!nocheck>,
+               python3-pytest-cov <!nocheck>,
+               python3-pytest-httpbin <!nocheck>,
+               python3-sniffio <!nocheck>,
+               python3-socksio <!nocheck>,
+               python3-trio <!nocheck>,
+               python3-trustme <!nocheck>,
+               python3-uvicorn <!nocheck>,
+Standards-Version: 4.6.2.0
+Homepage: https://github.com/encode/httpcore
+Vcs-Git: https://salsa.debian.org/morph/httpcore.git
+Vcs-Browser: https://salsa.debian.org/morph/httpcore
+Testsuite: autopkgtest-pkg-pybuild
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: python3-httpcore
+Architecture: all
+Depends: python3-h11 (>= 0.11),
+         ${misc:Depends},
+         ${python3:Depends},
+Recommends: ${python3:Recommends},
+Suggests: ${python3:Suggests},
+Description: minimal low-level HTTP client
+ The HTTP Core package provides a minimal low-level HTTP client, which does one
+ thing only. Sending HTTP requests.
+ .
+ It does not provide any high level model abstractions over the API, does not
+ handle redirects, multipart uploads, building authentication headers,
+ transparent HTTP caching, URL parsing, session cookie handling, content or
+ charset decoding, handling JSON, environment based configuration defaults, or
+ any of that Jazz.
+ .
+ Some things HTTP Core does do:
+ .
+  * Sending HTTP requests.
+  * Provides both sync and async interfaces.
+  * Supports HTTP/1.1 and HTTP/2.
+  * Async backend support for asyncio and trio.
+  * Automatic connection pooling.
+  * HTTP(S) proxy support.
