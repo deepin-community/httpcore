@@ -1,5 +1,135 @@
-template-repository (1.0-1) unstable; urgency=medium
+httpcore (1.0.4-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream release
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Sandro Tosi <morph@debian.org>  Wed, 06 Mar 2024 22:28:18 -0500
+
+httpcore (1.0.2-2) unstable; urgency=medium
+
+  * drop DPT
+
+ -- Sandro Tosi <morph@debian.org>  Fri, 01 Mar 2024 16:26:35 -0500
+
+httpcore (1.0.2-1) unstable; urgency=medium
+
+  * Team Upload.
+  * New upstream release.
+  * Refresh patches.
+  * Migrate to hatchling with pybuild-plugin-pyproject.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 01 Jan 2024 18:00:38 -0400
+
+httpcore (0.17.3-1) unstable; urgency=medium
+
+  * New upstream release; Closes: #1041479
+
+ -- Sandro Tosi <morph@debian.org>  Wed, 19 Jul 2023 22:58:26 -0400
+
+httpcore (0.16.3-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/patches/tests-add-markers-trio.patch
+    - refresh patch
+  * debian/rules
+    - exclude more failing tests
+  * run autopkgtest via autopkgtest-pkg-pybuild
+  * debian/copyright
+    - extend packaging copyright years
+  * debian/control
+    - bump Standards-Version to 4.6.2.0 (no changes needed)
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 01 Jan 2023 19:46:52 -0500
+
+httpcore (0.15.0-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+  [ Sandro Tosi ]
+  * New upstream release
+  * debian/rules
+    - exclude tests needing pytest-trio and set asyncio_mode=strict
+  * debian/patches/tests-add-markers-trio.patch
+    - add trio to pytest markers
+
+ -- Sandro Tosi <morph@debian.org>  Wed, 22 Jun 2022 21:41:06 -0400
+
+httpcore (0.14.5-3) unstable; urgency=medium
+
+  * debian/control
+    - add an explicit versioned Depends on h11 >= 0.11; Closes: #1007767
+
+ -- Sandro Tosi <morph@debian.org>  Tue, 29 Mar 2022 21:45:11 -0400
+
+httpcore (0.14.5-2) unstable; urgency=medium
+
+  * debian/control, debian/rules
+    - add socksio to b-d, needed by tests which were disable and can now be
+      enabled again
+  * debian/control
+    - bump Standards-Version to 4.6.0.1 (no changes needed)
+
+ -- Sandro Tosi <morph@debian.org>  Thu, 17 Mar 2022 20:21:31 -0400
+
+httpcore (0.14.5-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/copyright
+    - extend packaging copyright years
+  * debian/rules, debian/tests/unittests
+    - dont run tests requiring sockio, not packaged for debian yet
+
+ -- Sandro Tosi <morph@debian.org>  Thu, 24 Feb 2022 14:58:25 -0500
+
+httpcore (0.14.3-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/control
+    - add anyio, pytest-httpbin to b-d, needed by tests
+  * add autopkgtests
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 28 Nov 2021 23:16:03 -0500
+
+httpcore (0.13.7-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Sandro Tosi <morph@debian.org>  Wed, 06 Oct 2021 23:47:02 -0400
+
+httpcore (0.12.3-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/control
+    - add pytest-asyncio to b-d, needed by tests
+  * debian/rules
+    - add 2 new tests to skip + reorg list setup of skipped tests
+
+ -- Sandro Tosi <morph@debian.org>  Fri, 12 Feb 2021 23:40:12 -0500
+
+httpcore (0.12.2-1) unstable; urgency=medium
+
+  * New upstream release
+  * Use the new Debian Python Team contact name and address
+  * debian/copyright
+    - extend packaging copyright years
+  * debian/control
+    - add trio to b-d, needed by tests
+    - bump Standards-Version to 4.5.1 (no changes needed)
+    - bump dh compat to 13
+  * debian/rules
+    - exclude even more tests: accessing network or misisng modules
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 10 Jan 2021 00:25:32 -0500
+
+httpcore (0.12.0-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 25 Oct 2020 17:17:45 -0400
+
+httpcore (0.11.1-1) unstable; urgency=low
+
+  * Initial release; Closes: #969517
+
+ -- Sandro Tosi <morph@debian.org>  Thu, 01 Oct 2020 22:41:37 -0400

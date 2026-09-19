@@ -1,0 +1,24 @@
+From: Sandro Tosi <morph@debian.org>
+Date: Wed, 20 Dec 2023 20:53:13 -0400
+Subject: tests-add-markers-trio
+
+---
+ pyproject.toml | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 719fb18..ffc06a1 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -91,7 +91,10 @@ ignore_missing_imports = true
+ 
+ [tool.pytest.ini_options]
+ addopts = ["-rxXs", "--strict-config", "--strict-markers"]
+-markers = ["copied_from(source, changes=None): mark test as copied from somewhere else, along with a description of changes made to accodomate e.g. our test setup"]
++markers = [
++	"copied_from(source, changes=None): mark test as copied from somewhere else, along with a description of changes made to accodomate e.g. our test setup",
++	"trio: Requires Trio",
++]
+ filterwarnings = ["error"]
+ 
+ [tool.coverage.run]

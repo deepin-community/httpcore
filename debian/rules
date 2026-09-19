@@ -1,4 +1,47 @@
-#!/usr/bin/make -f
+#! /usr/bin/make -f
+
+export PYBUILD_NAME=httpcore
+# missing pproxy: test_proxy_socket_does_not_leak_when_the_connection_hasnt_been_added_to_pool
+# missing pytest-trio: test_response_async_read, test_response_async_streaming, test_connection_pool_concurrency, test_connection_pool_concurrency_same_domain_closing, test_connection_pool_concurrency_same_domain_keepalive
+export PYBUILD_TEST_ARGS=--verbose -o asyncio_mode=strict -k ' \
+	      not test_closing_http_request \
+	  and not test_connection_pool_get_connection_info \
+	  and not test_explicit_backend_name \
+	  and not test_http2_request \
+	  and not test_http_proxy \
+	  and not test_http_request \
+	  and not test_http_request_cannot_reuse_dropped_connection \
+	  and not test_http_request_local_address \
+	  and not test_http_request_reuse_connection \
+	  and not test_https_request \
+	  and not test_https_request_reuse_connection \
+	  and not test_max_keepalive_connections_handled_correctly \
+	  and not test_proxy_https_requests \
+	  and not test_proxy_socket_does_not_leak_when_the_connection_hasnt_been_added_to_pool \
+	  and not test_threadsafe_basic \
+	  and not test_broken_socket_detection_many_open_files \
+	  and not test_no_retries \
+	  and not test_retries_enabled \
+	  and not test_retries_exceeded \
+	  and not test_connection_timeout_tcp \
+	  and not test_connection_timeout_uds \
+	  and not test_response_async_read \
+	  and not test_response_async_streaming \
+	  and not test_connection_pool_concurrency \
+	  and not test_connection_pool_concurrency_same_domain_closing \
+	  and not test_connection_pool_concurrency_same_domain_keepalive \
+	  and not test_ssl_request \
+	  and not test_extra_info \
+	  and not test_socks5_request_incorrect_auth \
+	  and not test_socks5_request_failed_to_provide_auth \
+	  and not test_socks5_request_connect_failed \
+	  and not test_authenticated_socks5_request \
+	  and not test_socks5_request \
+	  '
 
 %:
-	dh $@
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_auto_install:
+	find .pybuild -type f -name .coverage -delete
+	dh_auto_install
